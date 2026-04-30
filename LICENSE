@@ -1,0 +1,21 @@
+Copyright (c) 2026 Ptolémé DE-SOUZA
+
+All rights reserved.
+
+This repository contains architecture documentation for a proprietary system.
+The documentation is published for portfolio and educational purposes.
+
+The implementation, source code, deployment configurations, and operational
+specifics of the actual system are NOT included in this repository and are
+NOT licensed for any use.
+
+You may not:
+  • use this documentation to reproduce a functionally equivalent system
+    for commercial purposes without explicit written permission
+  • redistribute this documentation in altered form
+  • claim authorship of the architecture or design decisions described
+
+You may:
+  • read and reference this documentation
+  • cite it (with attribution) in academic or technical writing
+  • discuss the concepts described in non-commercial contexts

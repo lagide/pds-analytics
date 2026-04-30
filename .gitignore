@@ -1,0 +1,12 @@
+# Aucun code source ne doit fuiter dans ce repo public
+*.py
+*.sh
+*.conf
+*.yml
+*.yaml
+*.json
+!package.json
+!ARCHITECTURE.md
+data/
+secrets/
+.env*
