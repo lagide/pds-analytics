@@ -139,5 +139,14 @@ implementation details remain private.
 
 ---
 
-*This README documents an internal system. Source code, deployment configs,
-and operational specifics are not published.*
+## Related
+
+This repository hosts only **architecture documentation**. The full
+implementation (backend, infrastructure configs, frontend tracker, dashboard)
+remains in a private repository — what's published here is the design rationale,
+the lessons learned, and a high-level architecture overview suitable for a
+portfolio showcase.
+
+---
+
+*Architecture documentation only. Source code and deployment specifics remain private.*
