@@ -1,6 +1,6 @@
 # PDS Analytics
 
-> **Self-hosted visitor forensics — analytics platform comparable to PostHog
+> **Self-hosted visitor forensics - analytics platform comparable to PostHog
 > on the fundamentals, with forensic specifics PostHog doesn't ship by default.**
 
 This repository documents the architecture and capabilities of an internal
@@ -20,21 +20,21 @@ designed for SaaS-scale: 4 vCPU + 16 GB RAM minimum, recommended only below
 a certain monthly event volume. For a portfolio site doing a few thousand
 visits per month, that's 50× more infrastructure than the use case demands.
 
-I wanted the same primitives — events, persons, funnels, retention, replay
-— in a footprint compatible with a single VPS, plus a few **forensic
+I wanted the same primitives - events, persons, funnels, retention, replay
+- in a footprint compatible with a single VPS, plus a few **forensic
 capabilities** that PostHog doesn't expose: deterministic browser fingerprinting,
 bot/human heuristic scoring, and related-visitor detection across sessions.
 
 ## Capabilities (8 sprints delivered)
 
-1. **Persons + identify()** — anonymous → known, cross-session merge
-2. **Web Vitals + JS errors** — auto-captured via `PerformanceObserver` + `window.error`
-3. **Visual funnel builder** — multi-step conversion with drop-off cascade
-4. **Retention cohort table** — Mixpanel-style heatmap, daily/weekly modes
-5. **Session replay (rrweb)** — DOM mutation journal, replayable like a film
-6. **Live admin toolbar** — heatmap overlay on the live site, in real time
-7. **Sankey paths diagram** — D3 visualization of navigation flows
-8. **Persistent cohorts** — visual rule engine on aggregated visitor properties
+1. **Persons + identify()** - anonymous -> known, cross-session merge
+2. **Web Vitals + JS errors** - auto-captured via `PerformanceObserver` + `window.error`
+3. **Visual funnel builder** - multi-step conversion with drop-off cascade
+4. **Retention cohort table** - Mixpanel-style heatmap, daily/weekly modes
+5. **Session replay (rrweb)** - DOM mutation journal, replayable like a film
+6. **Live admin toolbar** - heatmap overlay on the live site, in real time
+7. **Sankey paths diagram** - D3 visualization of navigation flows
+8. **Persistent cohorts** - visual rule engine on aggregated visitor properties
 
 Plus:
 - Canvas / WebGL / audio fingerprinting
@@ -81,19 +81,19 @@ Container     : Docker Compose · read-only filesystem · cap_drop ALL
         (event store)             (Playwright Chromium)
 ```
 
-The auth layer is **fully external** — the application has zero auth code.
+The auth layer is **fully external** - the application has zero auth code.
 This was a deliberate refactor mid-project: a single source of truth for
 authentication, audit-friendly logs, and clean separation of concerns.
 
 ## Pivots
 
-### Application secret → SSO-only auth
+### Application secret -> SSO-only auth
 First version used a shared application secret in URL parameters. Multiple
 problems: secret in access logs, browser history, Referer headers. Refactored
-to SSO + 2FA forward-auth — backend has zero auth code, single source of truth.
+to SSO + 2FA forward-auth - backend has zero auth code, single source of truth.
 
-### Heatmap viewport-only → full-page with screenshot background
-Initial heatmap rendered viewport-relative coordinates on a fixed canvas —
+### Heatmap viewport-only -> full-page with screenshot background
+Initial heatmap rendered viewport-relative coordinates on a fixed canvas -
 clicks at the bottom of long pages collapsed onto the top. Switched to
 full-page screenshots and document-relative positioning with the page height
 captured at click time.
@@ -104,12 +104,12 @@ A complete security review at the end of the build identified one HIGH severity
 finding (a SSRF in the screenshot endpoint due to insufficient input
 validation) and a few low-severity issues. All fixed:
 
-- **HIGH** — SSRF in screenshot generation: input validation + explicit
+- **HIGH** - SSRF in screenshot generation: input validation + explicit
   allow-list
-- **LOW** — JS-readable admin cookie: moved to HttpOnly + server-side
+- **LOW** - JS-readable admin cookie: moved to HttpOnly + server-side
   presence marker
-- **LOW** — Stack traces leaking internal paths: regex anonymization
-- **LOW** — Database file permissions: tightened
+- **LOW** - Stack traces leaking internal paths: regex anonymization
+- **LOW** - Database file permissions: tightened
 
 Final security audit rating: **9.7 / 10**.
 
@@ -143,7 +143,7 @@ implementation details remain private.
 
 This repository hosts only **architecture documentation**. The full
 implementation (backend, infrastructure configs, frontend tracker, dashboard)
-remains in a private repository — what's published here is the design rationale,
+remains in a private repository - what's published here is the design rationale,
 the lessons learned, and a high-level architecture overview suitable for a
 portfolio showcase.
 

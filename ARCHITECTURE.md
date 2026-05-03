@@ -8,23 +8,23 @@ application code runs.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  L1 — TLS / Reverse proxy                                         │
+│  L1 - TLS / Reverse proxy                                         │
 │  Traefik v3 with Let's Encrypt, HSTS preload, modern cipher       │
 │  suites only, CrowdSec bouncer at the edge                        │
 ├──────────────────────────────────────────────────────────────────┤
-│  L2 — Authentication                                              │
+│  L2 - Authentication                                              │
 │  Authelia forward-auth on admin subdomain (SSO + 2FA TOTP,        │
 │  brute-force regulation, audit logs)                              │
 ├──────────────────────────────────────────────────────────────────┤
-│  L3 — Rate limiting & ingress filtering                           │
+│  L3 - Rate limiting & ingress filtering                           │
 │  nginx with per-IP rate limit zones on public endpoints,          │
 │  explicit deny-by-default for non-public routes                   │
 ├──────────────────────────────────────────────────────────────────┤
-│  L4 — Application                                                 │
+│  L4 - Application                                                 │
 │  FastAPI with no auth code, parameterized SQL throughout,         │
 │  read-only filesystem, dropped capabilities                       │
 ├──────────────────────────────────────────────────────────────────┤
-│  L5 — Storage                                                     │
+│  L5 - Storage                                                     │
 │  SQLite (WAL) for relational data, NDJSON files for replay        │
 │  events, periodic asyncio cleanup tasks                           │
 └──────────────────────────────────────────────────────────────────┘
